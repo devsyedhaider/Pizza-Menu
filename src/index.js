@@ -58,9 +58,13 @@ function App() {
   );
 }
 
+// Header Component
+
 function Header() {
   return <h1>Fast React Pizza Co.</h1>;
 }
+
+// Menu Component
 
 function Menu() {
   return (
@@ -74,13 +78,23 @@ function Menu() {
   );
 }
 
+// Footer Component
+
 function Footer() {
+  const hour = new Date().getHours();
+  const openHour = 12;
+  const closeHour = 22;
+  const isOpen = hour >= openHour && hour <= closeHour;
+  console.log(isOpen);
+
   return (
     <>
-      <footer>{new Date.toLocaleTimeString()}. We're currently open</footer>
+      {/* <footer>{new Date.toLocaleTimeString()}. We're currently open</footer> */}
     </>
   );
 }
+
+// Pizza Component
 
 function Pizza() {
   return (
@@ -91,6 +105,8 @@ function Pizza() {
     </>
   );
 }
+
+// Rendring Root
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
