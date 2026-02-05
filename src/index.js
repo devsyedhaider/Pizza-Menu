@@ -51,7 +51,22 @@ console.log(pizzaData);
 function App() {
   return (
     <>
-      <h1>Hello React</h1>
+      <Header />
+      <Menu />
+      <Footer />
+    </>
+  );
+}
+
+function Header() {
+  return <h1>Fast React Pizza Co.</h1>;
+}
+
+function Menu() {
+  return (
+    <>
+      <h2>Our Menu</h2>
+      <Pizza />
       <Pizza />
       <Pizza />
       <Pizza />
@@ -59,11 +74,13 @@ function App() {
   );
 }
 
-function Header() {}
-
-function Menu() {}
-
-function Footer() {}
+function Footer() {
+  return (
+    <>
+      <footer>{new Date.toLocaleTimeString()}. We're currently open</footer>
+    </>
+  );
+}
 
 function Pizza() {
   return (
