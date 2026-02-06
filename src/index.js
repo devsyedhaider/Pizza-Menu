@@ -78,12 +78,14 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      {numpizzas > 0 && (
+      {numpizzas > 0 ? (
         <ul className="pizzas">
           {pizzaData.map((pizza) => (
             <Pizza PizzaObject={pizza} key={pizza.name} />
           ))}
         </ul>
+      ) : (
+        <p>We're still working on menu. Please come back later :)</p>
       )}
     </main>
   );
@@ -91,14 +93,14 @@ function Menu() {
 
 // Pizza Component
 
-function Pizza(props) {
+function Pizza({ PizzaObject }) {
   return (
     <li className="pizza">
-      <img src={props.PizzaObject.photoName} alt={props.PizzaObject.name} />
+      <img src={PizzaObject.photoName} alt={PizzaObject.name} />
       <div>
-        <h3>{props.PizzaObject.name}</h3>
-        <p>{props.PizzaObject.ingredients}</p>
-        <span>{props.PizzaObject.price}</span>
+        <h3>{PizzaObject.name}</h3>
+        <p>{PizzaObject.ingredients}</p>
+        <span>{PizzaObject.price}</span>
       </div>
     </li>
   );
@@ -116,16 +118,26 @@ function Footer() {
   return (
     <>
       <footer className="footer">
-        {isOpen && (
-          <div className="order">
-            <p>
-              We're open until until {closeHour}:00. Come visit us order online.
-            </p>
-            <button className="btn">Vist</button>
-          </div>
+        {isOpen ? (
+          <Openhour closeHour={closeHour} openHour={openHour} />
+        ) : (
+          <p>
+            We're happy to welcome you between {openHour}:00 and {closeHour}:00
+          </p>
         )}
       </footer>
     </>
+  );
+}
+
+function Openhour({ closeHour, openHour }) {
+  return (
+    <div className="order">
+      <p>
+        We're open {openHour}:00 to {closeHour}:00. Come visit us order online.
+      </p>
+      <button className="btn">Vist</button>
+    </div>
   );
 }
 
